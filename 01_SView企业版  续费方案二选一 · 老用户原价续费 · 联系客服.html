@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>SView企业版 | 续费方案二选一 · 限时特惠 · 联系客服</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #f5f7fb;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.45;
+            padding: 0 0 32px 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* 头部渐变 */
+        .hero {
+            background: linear-gradient(135deg, #0a1a2f 0%, #0f2a3f 100%);
+            padding: 32px 24px 48px 24px;
+            color: white;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(245,176,65,0.2);
+            backdrop-filter: blur(4px);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(245,176,65,0.5);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.25;
+            background: linear-gradient(to right, #FFFFFF, #B8E1FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: #cbddee;
+            margin-bottom: 28px;
+        }
+
+        /* 方案选择卡片区 */
+        .plans-section {
+            padding: 0 20px 20px 20px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 新灵活方案卡片 (限时优惠) */
+        .flex-card {
+            background: white;
+            border-radius: 32px;
+            padding: 24px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f8;
+            background: linear-gradient(145deg, #ffffff, #fefaf5);
+            position: relative;
+            overflow: hidden;
+        }
+        .flex-card::after {
+            content: "限时优惠";
+            position: absolute;
+            top: 12px;
+            right: -28px;
+            background: #E67E22;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 40px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .plan-label {
+            display: inline-block;
+            background: #E67E2210;
+            color: #E67E22;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            border: 0.5px solid #F5B04150;
+        }
+
+        .plan-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f2a3f;
+            margin-bottom: 12px;
+        }
+
+        .price-block {
+            margin: 16px 0;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .price-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #E67E22;
+        }
+        .price-unit {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4a627a;
+        }
+        .old-price {
+            font-size: 18px;
+            color: #9aaebf;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .seats-info {
+            display: inline-block;
+            background: #eef2fa;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-left: 10px;
+            color: #2c7da0;
+        }
+        .feature-list-small {
+            font-size: 13px;
+            color: #2c5a74;
+            margin: 12px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .feature-list-small span {
+            background: #f0f4fa;
+            padding: 4px 12px;
+            border-radius: 30px;
+        }
+        /* 新方案按钮 - 直接跳转链接 */
+        .btn-buy {
+            background: linear-gradient(95deg, #E67E22, #F39C12);
+            color: white;
+            width: 100%;
+            padding: 14px 0;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-buy:hover {
+            background: linear-gradient(95deg, #d35400, #e67e22);
+            transform: scale(0.98);
+        }
+
+        /* 原套餐按钮 - 联系客服（弹窗提示） */
+        .btn-contact-legacy {
+            background: transparent;
+            border: 1.5px solid #2c7da0;
+            color: #2c7da0;
+            width: 100%;
+            padding: 12px 0;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 18px;
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-contact-legacy:hover {
+            background: #2c7da0;
+            color: white;
+        }
+
+        /* 原套餐整合卡片 */
+        .legacy-card {
+            background: white;
+            border-radius: 32px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f8;
+        }
+
+        .legacy-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f2a3f;
+            margin-bottom: 8px;
+        }
+
+        .legacy-desc {
+            font-size: 13px;
+            color: #4a627a;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .old-plan-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .old-plan-item:last-child {
+            border-bottom: none;
+        }
+        .plan-name {
+            font-weight: 700;
+            color: #1f3a4b;
+        }
+        .plan-price {
+            font-weight: 800;
+            color: #E67E22;
+            font-size: 18px;
+        }
+        .plan-seats {
+            font-size: 12px;
+            color: #6c86a3;
+        }
+
+        /* 客服入口 */
+        .customer-service {
+            margin: 16px 20px 24px 20px;
+            background: linear-gradient(105deg, #ffffff 0%, #fef9ef 100%);
+            border-radius: 32px;
+            padding: 20px;
+            border: 1px solid #ffe1b3;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .qr-box {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #ffe0b5;
+        }
+
+        /* 真实二维码图片样式 */
+        .qr-box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .service-info {
+            flex: 1;
+        }
+        .service-info h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #E67E22;
+            margin-bottom: 6px;
+        }
+        .service-info p {
+            font-size: 13px;
+            color: #3a5a78;
+            margin-bottom: 8px;
+        }
+        .service-tip {
+            background: #eef2fa;
+            border-radius: 40px;
+            padding: 6px 12px;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* 信任标签 */
+        .trust-row {
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #eef2f8;
+            border-top: 1px solid #eef2f8;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #2c3e50;
+        }
+
+        /* 核心功能 */
+        .section {
+            padding: 28px 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #0f2a3f;
+        }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .feature-item {
+            background: #f9fbfe;
+            border-radius: 24px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .feature-icon {
+            font-size: 36px;
+            min-width: 56px;
+            text-align: center;
+            color: #2c7da0;
+        }
+        .feature-text h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .feature-text p {
+            font-size: 13px;
+            color: #4a627a;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #0b1420;
+            color: #8aa0b5;
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 12px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 24px 20px 40px 20px; }
+            .price-number { font-size: 42px; }
+            .plan-title { font-size: 22px; }
+            .customer-service { flex-direction: column; text-align: center; }
+            .qr-box { margin: 0 auto; }
+            .old-plan-item { flex-direction: column; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 头部 -->
+    <div class="hero">
+        <div class="badge">
+            <i class="fas fa-exchange-alt"></i> 计价方式焕新 · 限时特惠
+        </div>
+        <h1>续费方案自由选<br>灵活席位 or 原套餐</h1>
+        <div class="hero-desc">
+            老用户可保留原套餐续费享专属优惠，也可切换至新灵活计价（限时优惠288元/席/年）。<br>
+            新方案支持直接在线购买，原套餐请联系客服办理。
+        </div>
+    </div>
+
+    <!-- 方案区 -->
+    <div class="plans-section">
+        <!-- 方案一：新灵活方案 限时优惠 288元/席/年，原价365，按钮直接跳转购买链接 -->
+        <div class="flex-card">
+            <div class="plan-label"><i class="fas fa-star"></i> 新 · 灵活计价 · 限时特惠</div>
+            <div class="plan-title">按席位购买 · 自由增减</div>
+            <div class="price-block">
+                <div>
+                    <span class="price-number">288</span><span class="price-unit">元/席/年</span>
+                    <span class="old-price">原价365元</span>
+                </div>
+                <span class="seats-info">3人起购</span>
+            </div>
+            <div class="feature-list-small">
+                <span><i class="fas fa-check"></i> 随时增减席位</span>
+                <span><i class="fas fa-check"></i> 适应团队动态变化</span>
+                <span><i class="fas fa-check"></i> 全功能无差别</span>
+            </div>
+            <!-- 直接跳转购买链接（请替换为真实链接） -->
+            <a href="https://endpoints.sview3d.com/#/enterprisePage" class="btn-buy" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-shopping-cart"></i> 立即购买 288元/席/年
+            </a>
+            <p style="font-size: 11px; color: #8aa0b5; text-align: center; margin-top: 8px;">点击即跳转至官方购买页，支持在线支付</p>
+        </div>
+
+        <!-- 方案二：老用户原套餐（整合三个版本在一个卡片） -->
+        <div class="legacy-card">
+            <div class="plan-label" style="background:#2c7da010; color:#2c7da0;"><i class="fas fa-gem"></i> 老用户专享 · 原套餐续费</div>
+            <div class="legacy-title">保留原有计价方式</div>
+            <div class="legacy-desc">按之前购买套餐续费，价格更优，联系客服验证身份后即可办理。</div>
+            
+            <div class="old-plan-item">
+                <div>
+                    <span class="plan-name">基础版</span>
+                    <div class="plan-seats">10个席位</div>
+                </div>
+                <div class="plan-price">1,999元/年</div>
+            </div>
+            <div class="old-plan-item">
+                <div>
+                    <span class="plan-name">标准版</span>
+                    <div class="plan-seats">50个席位</div>
+                </div>
+                <div class="plan-price">9,999元/年</div>
+            </div>
+            <div class="old-plan-item">
+                <div>
+                    <span class="plan-name">专业版</span>
+                    <div class="plan-seats">100个席位</div>
+                </div>
+                <div class="plan-price">24,999元/年</div>
+            </div>
+            
+            <a href="#" class="btn-contact-legacy" onclick="event.preventDefault(); alert('请扫描下方客服二维码，获取原套餐续费专属优惠');">
+                <i class="fab fa-weixin"></i> 联系客服享原价续费
+            </a>
+            <p style="font-size: 11px; color: #8aa0b5; text-align: center; margin-top: 12px;">* 仅限老用户，需验证历史订单</p>
+        </div>
+
+        <!-- 提示信息 -->
+        <div style="background: #eef2fa; border-radius: 24px; padding: 12px 16px; font-size: 12px; margin-top: 8px; color: #2c5a74;">
+            <i class="fas fa-info-circle"></i> 两种方案任选其一，续费后席位/功能权益不变。新方案限时优惠288元/席/年（原价365元），适合人数灵活变动的团队；原套餐适合稳定规模。详情请咨询客服。
+        </div>
+    </div>
+
+    <!-- 客服入口 + 二维码（用于原套餐咨询） -->
+    <div class="customer-service">
+        <div class="qr-box">
+            <!-- 请将下面的图片路径替换为您本地的真实客服二维码图片，例如 "kefu_qr.png" -->
+            <img src="kefu.png" alt="客服微信二维码" style="width: 90px; height: 90px; border-radius: 16px; object-fit: cover;">
+        </div>
+        <div class="service-info">
+            <h4><i class="fab fa-weixin"></i> 扫码添加专属客服</h4>
+            <p>原套餐续费、对公合同、发票及技术支持请咨询客服。老用户验证后快速办理。</p>
+            <div class="service-tip">
+                <i class="fas fa-gift"></i> 续费即赠企业服务包
+            </div>
+        </div>
+    </div>
+
+    <!-- 信任标签 -->
+    <div class="trust-row">
+        <div class="trust-item"><i class="fas fa-check-circle" style="color:#2ecc71;"></i> 2000+制造企业信赖</div>
+        <div class="trust-item"><i class="fas fa-shield-alt"></i> 数据安全可控</div>
+        <div class="trust-item"><i class="fas fa-sync-alt"></i> 原套餐价格锁定</div>
+    </div>
+
+    <!-- 核心功能展示 -->
+    <div class="section">
+        <div class="section-title"><span>一个平台打通全周期</span></div>
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-drafting-compass"></i></div>
+                <div class="feature-text"><h4>设计出图一体化</h4><p>三维模型一键生成工程图，自动标注，导出DWG，版本自动比对。</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                <div class="feature-text"><h4>干涉检查 · 碰撞检测</h4><p>快速检测装配体碰撞，高亮干涉区域并输出报告，非设计人员也可独立操作。</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <div class="feature-text"><h4>三维工艺指导书</h4><p>交互式作业指导精准传递至生产端，提升现场作业规范性。</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
+                <div class="feature-text"><h4>安全传阅·权限管控</h4><p>精细化权限，项目隔离，外部协作轻量化共享，无需专业CAD软件。</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="feature-text"><h4>多终端协同</h4><p>PC / 平板 / 手机 / 微信小程序，随时随地看图批注。</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 流程示意 -->
+    <div style="margin: 0 20px 20px 20px; background: #f2f6fc; border-radius: 28px; padding: 20px;">
+        <div style="font-weight: 800; margin-bottom: 16px; text-align: center;">从设计到生产，一个平台图纸管到底</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+            <span style="background: white; border-radius: 40px; padding: 6px 16px; font-size: 13px;"><i class="fas fa-cube"></i> 三维设计</span>
+            <span style="background: white; border-radius: 40px; padding: 6px 16px; font-size: 13px;"><i class="fas fa-tools"></i> 干涉检查</span>
+            <span style="background: white; border-radius: 40px; padding: 6px 16px; font-size: 13px;"><i class="fas fa-file-alt"></i> 出工程图</span>
+            <span style="background: white; border-radius: 40px; padding: 6px 16px; font-size: 13px;"><i class="fas fa-share-alt"></i> 安全传阅</span>
+            <span style="background: white; border-radius: 40px; padding: 6px 16px; font-size: 13px;"><i class="fas fa-chalkboard"></i> 工艺指导</span>
+        </div>
+    </div>
+
+    <!-- 底部续费提醒 -->
+    <div style="background: #0f2a3f; margin: 16px 20px 24px 20px; border-radius: 32px; padding: 20px; text-align: center; color: white;">
+        <i class="fas fa-phone-alt" style="font-size: 28px; margin-bottom: 8px; display: inline-block;"></i>
+        <h3 style="font-size: 20px;">续费方案咨询 · 专属通道</h3>
+        <p style="margin-top: 8px; font-size: 14px;">新方案可直接在线购买；原套餐请扫码添加客服，验证身份后快速办理续费。</p>
+        <div style="margin-top: 16px; display: flex; justify-content: center; gap: 12px;">
+            <span style="background: #E67E22; padding: 6px 16px; border-radius: 60px; font-size: 13px;"><i class="fas fa-headset"></i> 在线客服</span>
+            <span style="background: #2c7da0; padding: 6px 16px; border-radius: 60px; font-size: 13px;"><i class="fab fa-weixin"></i> 微信客服</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><i class="fas fa-building"></i> SView企业版 · 贯通设计·工艺·生产全流程 | 数据安全可控，协同提效</p>
+        <p style="margin-top: 8px;">* 限时优惠价288元/席/年（原价365元/席/年），仅限活动期间。原套餐续费需验证历史订单，具体以客服答复为准。</p>
+        <p>© 2025 SView 企业协同平台</p>
+    </div>
+</div>
+</body>
+</html>
